@@ -117,18 +117,21 @@ end
 
 def install(name)
   execute "install package #{name}" do
+    Chef::Log.info("Executing '#{::ChocolateyHelpers.chocolatey_executable} install -y #{cmd_args} #{name}'")
     command "#{::ChocolateyHelpers.chocolatey_executable} install -y #{cmd_args} #{name}"
   end
 end
 
 def upgrade(name)
   execute "updating #{name} to latest" do
+    Chef::Log.info("Executing '#{::ChocolateyHelpers.chocolatey_executable} upgrade -y #{cmd_args} #{name}'")
     command "#{::ChocolateyHelpers.chocolatey_executable} upgrade -y #{cmd_args} #{name}"
   end
 end
 
 def install_version(name, version)
   execute "install package #{name} version #{version}" do
+    Chef::Log.info("Executing '#{::ChocolateyHelpers.chocolatey_executable} install -y -version  #{version} #{cmd_args} #{name}'")
     command "#{::ChocolateyHelpers.chocolatey_executable} install -y -version  #{version} #{cmd_args} #{name}"
   end
 end
