@@ -39,7 +39,7 @@ end
 action :install do
   if @current_resource.exists
     Chef::Log.info "#{@current_resource.package} already installed - nothing to do."
-  elsif @current_resource.version
+  elsif @current_resource.version and @current_resource.version != :latest
     install_version(@current_resource.package, @current_resource.version)
   else
     install(@current_resource.package)
